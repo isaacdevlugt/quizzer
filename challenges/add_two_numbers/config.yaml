@@ -1,0 +1,6 @@
+title: "Add two numbers"
+tests:
+  - input: [5, 4]
+    output: 9
+  - input: [-2, 2]
+    output: 0

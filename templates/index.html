@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PennyLane Quizzer</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR SECTION -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/index" id="navbar__logo">PennyLane Quizzer</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/index" class="navbar__links"> Home </a>
+          </li>
+          <li class="navbar__item">
+            <a href="/quizzer" class="navbar__links"> Quizzer </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="main__container">
+      <div class="main__content">
+        <h1>PennyLane Quizzer</h1>
+        <p>Test your PennyLane skills.</p>
+        <button class="main__btn">
+          <a href="/quizzer">Get Started</a>
+        </button>
+      </div>
+      <div class="main__img--container">
+        <img src="images/pic1.svg" alt="pic" id="main__img" />
+      </div>
+    </div>
+
+    <!-- PREVIOUS QUESTIONS -->
+    <div class="previous__questions">
+      <h1>Previous quiz questions</h1>
+      <div class="previous__questions__container">
+        <div class="previous__questions__card">
+          <h2>Question 1</h2>
+          <p>Add some numbers</p>
+          <button class="previous__questions__btn">
+            <a href="question1.html">Try it out</a>
+          </button>
+        </div>
+        <div class="previous__questions__card">
+          <h2>Question 2</h2>
+          <p>Multiply some numbers</p>
+          <button class="previous__questions__btn">
+            <a href="question2.html">Try it out</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer_link--wrapper">
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/index">How it works</a>
+            <a href="/index">Testimonials</a>
+            <a href="/index">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

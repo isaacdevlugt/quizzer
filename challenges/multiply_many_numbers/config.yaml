@@ -1,0 +1,6 @@
+title: "Multiply numbers"
+tests:
+  - input: [5, 4]
+    output: 20
+  - input: [-2, 2, 1, 42]
+    output: -168

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if question_title %}
+    <title>Quizzer - {{ question_title }}</title>
+    {% else %}
+    <title>Quizzer</title>
+    {% endif %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR SECTION -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/index" id="navbar__logo">PennyLane Quizzer</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/index" class="navbar__links"> Home </a>
+          </li>
+          <li class="navbar__item">
+            <a href="/quizzer" class="navbar__links"> Quizzer </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Question section -->
+    <div class="question__container">
+      <div class="question__content">
+        <h1>Question:</h1>
+        <p>Add two numbers!</p>
+        <p class="question__text">Put your code below.</p>
+        <br />
+        <form method="POST" class="grid" action="/quizzer">
+          <textarea id="code" name="code" rows="4" cols="50">
+Enter your code here.</textarea
+          >
+          <div class="submit__code">
+            <p>Ready to submit?</p>
+            <input
+              type="submit"
+              name="submit__code__button"
+              value="Submit code"
+            />
+            <h3>{{ message }}</h3>
+
+            <!-- <input type="Submit" class="submit__code__button" /> -->
+          </div>
+        </form>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static',filename='js/app.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"
+    ></script>
+  </body>
+</html>
