@@ -1,32 +1,16 @@
-import yaml
-
-def get_test_cases(config):
-
-    inputs = []
-    outputs = []
-
-    with open(config, "r") as config_file:
-        contents = yaml.load(config_file, Loader=yaml.FullLoader)
-    
-    for test in contents["tests"]:
-        inputs.append(test["input"])
-        outputs.append(test["output"])
-    
-    return inputs, outputs
-
-def evaluate(ID, code):
+def evaluate(location, contents, code):
 
     user_input = {}
     state = {"success": False, "message": ""}
-
-    inputs, outputs = get_test_cases(ID + "/config.yaml")
+    test_cases = contents["tests"]
 
     try:
         exec(code, user_input)
-        func_name = user_input.keys()[0]  # TODO: what if more than one func
-
-        for (input, output) in zip(inputs, outputs):
-            if user_input[func_name](input) == output:
+        func_name = list(user_input.keys())[1]
+        #correct_code = getattr(__import__(location + ".correct_code", fromlist=["add"]), "add")
+        for test_case in test_cases:
+            if user_input[func_name](*test_case["input"]) == test_case["output"]: 
+                # TODO: this will only work when the function accepts individual args
                 continue
             else:
                 state["message"] = "Try again!"

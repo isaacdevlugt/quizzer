@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
 
-from challenges import evaluate_code
+from challenges.evaluate_code import evaluate
 
 import os
-import json
 import yaml
 
 app = Flask(__name__)
@@ -11,49 +10,52 @@ app = Flask(__name__)
 
 def fetch_questions():
     dirs = os.listdir("challenges/")
-
-    locations = []
-    titles = []
-
+    db = {}
     for dir in dirs:
-        with open(dir + "config.yaml", "r") as config_file:
-            contents = yaml.load(config_file, Loader=yaml.FullLoader)
+        if os.path.isdir("challenges/" + dir) and dir != "__pycache__":
+            with open("challenges/" + dir + "/config.yaml", "r") as config_file:
+                contents = yaml.load(config_file, Loader=yaml.FullLoader)
+            db[dir] = contents
 
-        locations.append("challenges/" + dir)
-        titles.append(contents["title"])
+    return db
 
-    return locations, titles
+
+database = fetch_questions()
 
 
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", database=database)
 
 
-@app.route("/allquestions")
-def allquestions():
-    question_locations, titles = fetch_questions()
-    return render_template(
-        "allquestions.html", question_locations=question_locations, titles=titles
-    )
-
-
-@app.route("/quizzer", methods=["POST", "GET"])
-def quizzer():
+@app.route("/<location>", methods=["POST", "GET"])
+def question(location):
+    boiler_plate_code = open("challenges/" + location + "/code.py", "r").readlines()
     message = ""
     if request.method == "POST":
-        if request.form.get("submit__code__button") == "Submit code":
+        if request.form.get("submit__code__button") == "Submit":
             output = request.form.to_dict()
             code = output["code"]
-            state = evaluate_code(code) # TODO: ID is now an arg
+            state = evaluate(location, database[location], code)
 
             return render_template(
-                "quizzer.html", message=state["message"], success=state["success"]
+                "question.html",
+                location=location,
+                contents=database[location],
+                message=state["message"],
+                success=state["success"],
+                textarea_value=code
             )
 
-    return render_template("quizzer.html")
+    return render_template(
+        "question.html", location=location, contents=database[location], textarea_value=boiler_plate_code
+    )
 
-
+"""
+@app.route("/questions")
+def questions():
+    return render_template("questions.html", database=database)
+"""
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

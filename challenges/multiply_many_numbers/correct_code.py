@@ -1,6 +1,3 @@
-def multiply(numbers):
+def multiply(x, y):
     """Multiply numbers"""
-    res = 1
-    for number in numbers:
-        res *= number
-    return res
+    return x * y

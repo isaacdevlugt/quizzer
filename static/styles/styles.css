@@ -29,8 +29,8 @@
 }
 
 #navbar__logo {
-  background-color: #ff8177;
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb119 100%);
+  background-color: #088cff;
+  background-image: linear-gradient(to top, #088cff 0%, #b1c7ff 100%);
   background-size: 100%;
   -webkit-background-clip: text; /* clip background to text */
   -moz-background-clip: text;
@@ -96,7 +96,7 @@
 }
 
 .navbar__links:hover {
-  color: #f77062;
+  color: #088cff;
   transition: all 0.4s ease;
 }
 
@@ -217,7 +217,7 @@
 .main__content h1 {
   font-size: 4rem;
   background-color: #ff8177;
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background-image: linear-gradient(to top, #088cff 0%, #b1c7ff 100%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -229,7 +229,7 @@
 .main__content h2 {
   font-size: 4rem;
   background-color: #ff8177;
-  background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
+  background-image: linear-gradient(to top, #088cff 0%, #b1c7ff 100%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -247,7 +247,7 @@
 
 .main__btn {
   font-size: 1rem;
-  background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+  background-image: linear-gradient(to top, #088cff 0%, #b1c7ff 100%);
   padding: 14px 32px;
   border: none;
   border-radius: 10px;
@@ -360,15 +360,15 @@
 }
 
 .previous__questions h1 {
-  background-color: #ff8177;
+  background-color: #088cff 0%;
   background-image: linear-gradient(
     to right,
-    #ff8177 0%,
-    #ff867a 0%,
-    #ff8c7f 21%,
-    #f99185 52%,
-    #cf556c 78%,
-    #b12a5b 100%
+    #7977ff 0%,
+    #7c7aff 0%,
+    #817fff 21%,
+    #9085f9 52%,
+    #5555cf 78%,
+    #332ab1 100%
   );
   background-size: 100%;
   margin-bottom: 5rem;
@@ -426,7 +426,7 @@
     border: none;
     outline: none;
     border-radius: 10px;
-    background: #f77062;
+    background:#088cff;
     position: absolute;
     top: 440px;
     left: 30px;
@@ -467,3 +467,40 @@
 
 /* FOOTER */
 
+
+.editor {
+  display: inline-flex;
+  gap: 10px;
+  font-family: monospace;
+  line-height: 21px;
+  background: #FFF;
+  border-radius: 2px;
+  padding: 20px 10px;
+}
+
+textarea {
+  line-height: 21px;
+  overflow-y: hidden;
+  padding: 0;
+  border: 0;
+  background: #FFF;
+  color: #000000;
+  min-width: 500px;
+  outline: none;
+  resize: none;
+}
+
+.line-numbers {
+  width: 20px;
+  text-align: right;
+}
+
+.line-numbers span {
+  counter-increment: linenumber;
+}
+
+.line-numbers span::before {
+  content: counter(linenumber);
+  display: block;
+  color: #506882;
+}

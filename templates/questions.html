@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizzer</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="previous__questions">
+      <h1>Quiz questions</h1>
+      <div class="previous__questions__container">
+        {% for title, location in zip(titles, locations) %}
+        <div class="previous__questions__card">
+          <h2>{{ title }}</h2>
+          <button class="previous__questions__btn">
+            <a href="{{ location }}.html">Try it out</a>
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static',filename='js/app.js') }}"
+    ></script>
+  </body>
+</html>
